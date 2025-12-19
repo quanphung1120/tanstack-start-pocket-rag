@@ -3,17 +3,9 @@ import { ArrowRight } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
-/**
- * Hero section with max-width container and two-column layout.
- * Optimized animations to reduce flickering during page load:
- * - Uses CSS `will-change` for GPU-accelerated transforms
- * - Gentler background animations with longer durations
- * - Staggered entry animations with appropriate delays
- */
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-      {/* Background Decor - static gradients without continuous animation */}
       <div
         className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,var(--primary)_0%,transparent_50%)] opacity-10 dark:opacity-20"
         aria-hidden="true"

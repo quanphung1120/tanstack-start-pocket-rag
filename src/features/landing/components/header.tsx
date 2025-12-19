@@ -20,7 +20,8 @@ export function Header({ user }: HeaderProps) {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 dark:border-white/5 bg-background/50 backdrop-blur-xl">
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Brand */}
-        <Link preload={false}
+        <Link
+          preload={false}
           to="/"
           className="text-xl font-heading font-extrabold tracking-tight hover:opacity-80 transition-opacity flex items-center gap-2"
         >
@@ -29,21 +30,24 @@ export function Header({ user }: HeaderProps) {
 
         {/* Center nav links */}
         <div className="hidden md:flex items-center gap-8">
-          <Link preload={false}
+          <Link
+            preload={false}
             to="/"
             hash="features"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Features
           </Link>
-          <Link preload={false}
+          <Link
+            preload={false}
             to="/"
             hash="pricing"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Pricing
           </Link>
-          <Link preload={false}
+          <Link
+            preload={false}
             to="/"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
@@ -77,14 +81,18 @@ export function Header({ user }: HeaderProps) {
                 asChild
                 className="hidden md:inline-flex font-medium"
               >
-                <Link preload={false} to="/dashboard">Login</Link>
+                <Link preload={false} to="/dashboard">
+                  Login
+                </Link>
               </Button>
 
               <Button
                 asChild
                 className="h-9 px-3 text-xs sm:h-11 sm:px-6 sm:text-sm font-semibold shadow-md shadow-primary/10"
               >
-                <Link preload={false} to="/dashboard">Get Started</Link>
+                <Link preload={false} to="/dashboard">
+                  Get Started
+                </Link>
               </Button>
             </>
           ) : (
@@ -92,7 +100,9 @@ export function Header({ user }: HeaderProps) {
               asChild
               className="h-9 px-3 text-xs sm:h-11 sm:px-6 sm:text-sm font-semibold shadow-md shadow-primary/10"
             >
-              <Link preload={false} to="/dashboard">Dashboard</Link>
+              <Link preload={false} to="/dashboard">
+                Dashboard
+              </Link>
             </Button>
           )}
         </div>
