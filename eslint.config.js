@@ -1,31 +1,44 @@
 // eslint.config.js
-import { defineConfig } from 'eslint/config'
 import { tanstackConfig } from '@tanstack/eslint-config'
 import pluginQuery from '@tanstack/eslint-plugin-query'
 import pluginRouter from '@tanstack/eslint-plugin-router'
+import reactHooksPlugin from 'eslint-plugin-react-hooks'
 
-export default defineConfig([
+export default [
+    // ─────────────────────────────────────────────────────────────────────────
+    // Global ignores
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+        ignores: ['.output/**', '*.config.js', '*.config.mjs'],
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
     // Base TanStack shared config (JS/TS, stylistic, etc.)
-    ...tanstackConfig, // framework-agnostic baseline used by TanStack packages
+    // ─────────────────────────────────────────────────────────────────────────
+    ...tanstackConfig,
 
+    // ─────────────────────────────────────────────────────────────────────────
     // TanStack Query rules
-    {
-        files: ['**/*.{ts,tsx,js,jsx}'],
-        ...pluginQuery.configs['flat/recommended'], // recommended flat config for Query
-    },
+    // ─────────────────────────────────────────────────────────────────────────
+    ...pluginQuery.configs['flat/recommended'],
 
+    // ─────────────────────────────────────────────────────────────────────────
     // TanStack Router rules
-    {
-        files: ['**/*.{ts,tsx,js,jsx}'],
-        ...pluginRouter.configs['flat/recommended'], // recommended flat config for Router
-    },
+    // ─────────────────────────────────────────────────────────────────────────
+    ...pluginRouter.configs['flat/recommended'],
 
-    // Your project-specific tweaks
+    // ─────────────────────────────────────────────────────────────────────────
+    // React Hooks + React Compiler rules (recommended-latest includes compiler)
+    // ─────────────────────────────────────────────────────────────────────────
+    reactHooksPlugin.configs.flat['recommended-latest'],
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Project-specific tweaks
+    // ─────────────────────────────────────────────────────────────────────────
     {
         rules: {
-            // examples – adjust as you like
             'no-console': ['warn', { allow: ['warn', 'error'] }],
             '@typescript-eslint/explicit-function-return-type': 'off',
         },
     },
-])
+]

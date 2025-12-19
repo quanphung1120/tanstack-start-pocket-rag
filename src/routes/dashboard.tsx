@@ -19,8 +19,6 @@ export const Route = createFileRoute('/dashboard')({
 function DashboardLayoutComponent() {
   const data = Route.useLoaderData()
 
-  if (!data?.user) return null
-
   return (
     <DashboardLayout user={data.user}>
       <Outlet />
