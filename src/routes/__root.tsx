@@ -8,7 +8,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import { ThemeProvider } from 'tanstack-theme-kit'
 import { AuthKitProvider } from '@workos/authkit-tanstack-react-start/client'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { ReactQueryDevtoolsPanel } from '@tanstack/react-query-devtools'
 import appCss from '../styles.css?url'
 import type { QueryClient } from '@tanstack/react-query'
 import { ErrorPage } from '@/components/error-page'
@@ -71,13 +71,17 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             {children}
           </ThemeProvider>
-          <ReactQueryDevtools buttonPosition="bottom-left" />
+
           <TanStackDevtools
             config={{ position: 'bottom-right' }}
             plugins={[
               {
                 name: 'Tanstack Router',
                 render: <TanStackRouterDevtoolsPanel />,
+              },
+              {
+                name: 'React Query',
+                render: <ReactQueryDevtoolsPanel />,
               },
             ]}
           />
