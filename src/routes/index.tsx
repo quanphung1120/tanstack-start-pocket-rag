@@ -18,14 +18,6 @@ export const Route = createFileRoute('/')({
   component: LandingPage,
 })
 
-/**
- * Optimized Landing Page component.
- * Uses semantic HTML5 elements for better accessibility and SEO:
- * - <header> for navigation
- * - <main> for primary content
- * - <section> for each content block
- * - <footer> for site footer
- */
 function LandingPage() {
   const { user } = Route.useLoaderData()
 
