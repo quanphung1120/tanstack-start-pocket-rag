@@ -69,7 +69,7 @@ export function Pricing() {
               asChild
               className="w-full h-10 sm:h-12 text-sm font-bold shadow-[4px_4px_0px_0px_oklch(var(--primary))] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
             >
-              <Link to="/dashboard">Get Started Now</Link>
+              <Link preload={false} to="/dashboard">Get Started Now</Link>
             </Button>
           </div>
         </div>

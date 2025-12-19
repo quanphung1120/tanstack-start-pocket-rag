@@ -93,6 +93,7 @@ export function AppSidebar({ user }: AppSidebarProps) {
               className="hover:bg-transparent"
             >
               <Link
+                preload={false}
                 to="/"
                 className="flex items-center justify-center w-full font-heading font-black! text-2xl! tracking-tighter transition-all hover:opacity-80 leading-none select-none"
               >
@@ -126,6 +127,7 @@ export function AppSidebar({ user }: AppSidebarProps) {
                     className="h-10 px-3 data-active:bg-primary/5 data-active:text-primary transition-colors hover:bg-muted"
                   >
                     <Link
+                      preload={false}
                       to={item.url as any}
                       className="flex items-center gap-3"
                     >
@@ -154,6 +156,7 @@ export function AppSidebar({ user }: AppSidebarProps) {
                     className="h-10 px-3 data-active:bg-primary/5 data-active:text-primary transition-colors hover:bg-muted"
                   >
                     <Link
+                      preload={false}
                       to={item.url as any}
                       className="flex items-center gap-3"
                     >
@@ -218,7 +221,7 @@ export function AppSidebar({ user }: AppSidebarProps) {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem asChild className="cursor-pointer">
-                    <Link to={'/dashboard/settings' as any}>
+                    <Link preload={false} to={'/dashboard/settings' as any}>
                       <Settings className="mr-2 size-4" />
                       Account Settings
                     </Link>
@@ -270,7 +273,7 @@ export function AppSidebar({ user }: AppSidebarProps) {
                   asChild
                   className="cursor-pointer text-destructive focus:bg-destructive/10"
                 >
-                  <Link to={'/api/auth/signout' as any} preload={false}>
+                  <Link preload={false} to={'/api/auth/signout' as any}>
                     <LogOut className="mr-2 size-4" />
                     Log out
                   </Link>

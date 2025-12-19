@@ -88,7 +88,7 @@ export function ErrorPage({ error, reset }: ErrorPageProps) {
             asChild
             className="h-12 px-8 text-sm font-medium border-border/10 bg-background/50 backdrop-blur-sm shadow-[4px_4px_0px_0px_oklch(var(--border))]"
           >
-            <Link to="/">
+            <Link preload={false} to="/">
               <Home className="size-4 mr-2" />
               BACK TO HOME
             </Link>

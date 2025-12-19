@@ -62,7 +62,7 @@ export function Hero() {
                 asChild
                 className="h-10 px-6 text-xs sm:h-12 sm:px-8 sm:text-sm font-bold shadow-[4px_4px_0px_0px_oklch(var(--primary))] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
               >
-                <Link to="/dashboard">
+                <Link preload={false} to="/dashboard">
                   START BUILDING
                   <ArrowRight className="size-4 ml-2" />
                 </Link>
@@ -74,7 +74,7 @@ export function Hero() {
                 asChild
                 className="h-10 px-6 text-xs sm:h-12 sm:px-8 sm:text-sm font-medium border-border/10 bg-background/50 backdrop-blur-sm shadow-[4px_4px_0px_0px_oklch(var(--border))]"
               >
-                <Link to="/" hash="features">
+                <Link preload={false} to="/" hash="features">
                   VIEW CAPABILITIES
                 </Link>
               </Button>

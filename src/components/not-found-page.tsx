@@ -61,7 +61,7 @@ export function NotFoundPage() {
             asChild
             className="h-12 px-8 text-sm font-bold shadow-[4px_4px_0px_0px_oklch(var(--primary))] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
           >
-            <Link to="/">
+            <Link preload={false} to="/">
               <Home className="size-4 mr-2" />
               BACK TO HOME
             </Link>
@@ -73,7 +73,7 @@ export function NotFoundPage() {
             asChild
             className="h-12 px-8 text-sm font-medium border-border/10 bg-background/50 backdrop-blur-sm shadow-[4px_4px_0px_0px_oklch(var(--border))]"
           >
-            <Link to="/" hash="features">
+            <Link preload={false} to="/" hash="features">
               <Search className="size-4 mr-2" />
               EXPLORE FEATURES
             </Link>

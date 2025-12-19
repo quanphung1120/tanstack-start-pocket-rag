@@ -17,6 +17,7 @@ export const getRouter = () => {
       queryClient,
     },
     scrollRestoration: true,
+    defaultPreload: false,
     defaultPreloadStaleTime: 0,
     defaultNotFoundComponent: () => <NotFoundPage />,
     defaultErrorComponent: ({ error, reset }) => (
