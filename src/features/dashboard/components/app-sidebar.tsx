@@ -94,14 +94,17 @@ export function AppSidebar({ user }: AppSidebarProps) {
             >
               <Link
                 to="/"
-                className="flex items-center justify-center w-full font-heading font-black! text-2xl! tracking-tighter transition-all hover:opacity-80"
+                className="flex items-center justify-center w-full font-heading font-black! text-2xl! tracking-tighter transition-all hover:opacity-80 leading-none select-none"
               >
-                <span className="group-data-[collapsible=icon]:hidden leading-none select-none">
+                <span className="group-data-[collapsible=icon]:hidden">
                   POCKET RAG
                 </span>
-                <div className="hidden group-data-[collapsible=icon]:flex h-8 w-8 shrink-0 items-center justify-center bg-primary text-primary-foreground text-[10px] font-black shadow-sm">
+                <span
+                  className="hidden group-data-[collapsible=icon]:flex h-8 w-8 shrink-0 items-center justify-center bg-primary text-primary-foreground text-[10px] font-black shadow-sm"
+                  aria-hidden="true"
+                >
                   PR
-                </div>
+                </span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

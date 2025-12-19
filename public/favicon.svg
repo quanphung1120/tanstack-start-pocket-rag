@@ -1,0 +1,35 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="p-grad" x1="14" y1="10" x2="58" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF8C42"/>
+      <stop offset="100%" stop-color="#FF4F17"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Dark modern base -->
+  <rect x="2" y="2" width="60" height="60" rx="18" fill="#0F0F0F" />
+  
+  <!-- Main Stylized 'P' -->
+  <path 
+    d="M18 14C18 11.7909 19.7909 10 22 10H38C49.0457 10 58 18.9543 58 30C58 41.0457 49.0457 50 38 50H26V52C26 54.2091 24.2091 56 22 56H18C15.7909 56 14 54.2091 14 52V18" 
+    fill="url(#p-grad)" 
+  />
+  
+  <!-- Internal 'Pocket' / Data Void -->
+  <path 
+    d="M26 22C26 19.7909 27.7909 18 30 18H38C44.6274 18 50 23.3726 50 30C50 36.6274 44.6274 42 38 42H26V22Z" 
+    fill="white" 
+    fill-opacity="0.12" 
+  />
+  
+  <!-- Glowing Data Point -->
+  <circle cx="34" cy="30" r="4" fill="white" filter="url(#glow)" fill-opacity="0.9" />
+  <circle cx="42" cy="26" r="2.5" fill="white" fill-opacity="0.4" />
+  
+  <!-- Subtle top highlight -->
+  <rect x="6" y="6" width="52" height="1" rx="0.5" fill="white" fill-opacity="0.05" />
+</svg>

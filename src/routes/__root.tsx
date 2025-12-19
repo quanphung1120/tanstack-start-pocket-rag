@@ -14,28 +14,15 @@ import type { QueryClient } from '@tanstack/react-query'
 import { ErrorPage } from '@/components/error-page'
 import { NotFoundPage } from '@/components/not-found-page'
 
-/**
- * Root route configuration for the TanStack Start application.
- * Configures the shell component, error boundaries, and not-found handling.
- */
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient
 }>()({
-  /**
-   * Default component renders the child routes via Outlet
-   */
   component: RootComponent,
 
-  /**
-   * Error boundary component - uses brand styling for a consistent UX
-   */
   errorComponent: ({ error, reset }) => (
     <ErrorPage error={error} reset={reset} />
   ),
 
-  /**
-   * Not found component - displayed when no route matches
-   */
   notFoundComponent: () => <NotFoundPage />,
 
   head: () => ({
@@ -44,22 +31,19 @@ export const Route = createRootRouteWithContext<{
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'Pocket RAG - Your Docs, Reimagined' },
     ],
-    links: [{ rel: 'stylesheet', href: appCss }],
+    links: [
+      { rel: 'stylesheet', href: appCss },
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+    ],
   }),
 
   shellComponent: RootDocument,
 })
 
-/**
- * Root component renders the Outlet for child routes.
- */
 function RootComponent() {
   return <Outlet />
 }
 
-/**
- * Root document wraps the entire application with providers and the HTML structure.
- */
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>

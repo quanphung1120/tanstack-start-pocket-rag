@@ -12,14 +12,14 @@ function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-heading font-extrabold tracking-tight">
+      <header>
+        <h1 className="text-3xl font-heading font-extrabold tracking-tight">
           Welcome back, {user.firstName}!
-        </h2>
+        </h1>
         <p className="text-muted-foreground mt-2">
           Here's what's happening with your documents today.
         </p>
-      </div>
+      </header>
 
       <div className="grid gap-6 md:grid-cols-3">
         <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
