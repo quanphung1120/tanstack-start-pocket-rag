@@ -6,7 +6,7 @@ export const Route = createFileRoute('/dashboard/')({
     const { user } = await getAuth()
 
     if (!user) {
-      const signInUrl = await getSignInUrl()
+      const signInUrl = await getSignInUrl({ data: '/dashboard' })
       throw redirect({ href: signInUrl })
     }
 
