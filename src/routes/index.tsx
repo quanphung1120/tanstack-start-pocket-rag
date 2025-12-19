@@ -1,11 +1,43 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router'
+import { getAuth } from '@workos/authkit-tanstack-react-start'
+import { Header } from '@/features/landing/components/header'
+import { Hero } from '@/features/landing/components/hero'
+import { Features } from '@/features/landing/components/features'
+import { Pricing } from '@/features/landing/components/pricing'
+import { Footer } from '@/features/landing/components/footer'
 
-export const Route = createFileRoute("/")({ component: App });
+/**
+ * Landing page route configuration.
+ * Loads authentication state to conditionally render navigation.
+ */
+export const Route = createFileRoute('/')({
+  loader: async () => {
+    const { user } = await getAuth()
+    return { user }
+  },
+  component: LandingPage,
+})
 
-function App() {
+/**
+ * Optimized Landing Page component.
+ * Uses semantic HTML5 elements for better accessibility and SEO:
+ * - <header> for navigation
+ * - <main> for primary content
+ * - <section> for each content block
+ * - <footer> for site footer
+ */
+function LandingPage() {
+  const { user } = Route.useLoaderData()
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
-      <div className="font-medium">Hello World</div>
-    </div>
-  );
+    <>
+      <Header user={user} />
+      <main>
+        <Hero />
+        <Features />
+        <Pricing />
+      </main>
+      <Footer />
+    </>
+  )
 }
