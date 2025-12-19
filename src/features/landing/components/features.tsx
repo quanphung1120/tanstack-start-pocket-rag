@@ -12,16 +12,16 @@ export function Features() {
   return (
     <section
       id="features"
-      className="py-32 relative overflow-hidden bg-background"
+      className="py-16 sm:py-24 lg:py-32 relative overflow-hidden bg-background"
     >
-      <div className="max-w-7xl mx-auto px-6 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
-          <div className="max-w-2xl space-y-4">
-            <h2 className="text-sm font-bold tracking-[0.2em] text-primary uppercase">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16 lg:mb-20">
+          <div className="max-w-2xl space-y-3 sm:space-y-4">
+            <h2 className="text-xs sm:text-sm font-bold tracking-[0.2em] text-primary uppercase">
               Engineered for Depth
             </h2>
-            <p className="text-4xl md:text-5xl font-heading font-extrabold tracking-tight">
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold tracking-tight">
               Beyond simple search. <br />
               <span className="text-muted-foreground">
                 True document intelligence.
@@ -37,14 +37,14 @@ export function Features() {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 auto-rows-[240px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-6 auto-rows-auto sm:auto-rows-[200px] lg:auto-rows-[240px]">
           {/* Main Feature */}
-          <Card className="md:col-span-6 lg:col-span-8 row-span-2 group overflow-hidden border-white/5 bg-muted/30 backdrop-blur-sm shadow-[8px_8px_0px_0px_oklch(var(--primary)/0.1)]">
-            <CardHeader className="h-full flex flex-col justify-between p-8">
-              <div className="space-y-4">
-                <div className="size-12 bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform border border-primary/20">
+          <Card className="sm:col-span-2 lg:col-span-8 lg:row-span-2 group overflow-hidden border-white/5 bg-muted/30 backdrop-blur-sm shadow-[8px_8px_0px_0px_oklch(var(--primary)/0.1)]">
+            <CardHeader className="h-full flex flex-col justify-between p-5 sm:p-6 lg:p-8">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="size-10 sm:size-12 bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform border border-primary/20">
                   <svg
-                    className="size-6"
+                    className="size-5 sm:size-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -57,19 +57,19 @@ export function Features() {
                     />
                   </svg>
                 </div>
-                <CardTitle className="text-3xl font-heading font-black tracking-tighter uppercase">
+                <CardTitle className="text-xl sm:text-2xl lg:text-3xl font-heading font-black tracking-tighter uppercase">
                   Semantic Search
                 </CardTitle>
-                <CardDescription className="text-lg font-body leading-relaxed max-w-md">
+                <CardDescription className="text-sm sm:text-base lg:text-lg font-body leading-relaxed max-w-md">
                   We don't just find keywords. Our AI understands the conceptual
                   link between your question and the source text.
                 </CardDescription>
               </div>
-              <div className="flex gap-2">
-                <div className="px-3 py-1 bg-background/50 border border-white/5 text-[10px] font-bold uppercase tracking-wider">
+              <div className="flex flex-wrap gap-2 mt-4">
+                <div className="px-2 py-0.5 sm:px-3 sm:py-1 bg-background/50 border border-white/5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
                   Vector Indexing
                 </div>
-                <div className="px-3 py-1 bg-background/50 border border-white/5 text-[10px] font-bold uppercase tracking-wider">
+                <div className="px-2 py-0.5 sm:px-3 sm:py-1 bg-background/50 border border-white/5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
                   Embeddings v3
                 </div>
               </div>
@@ -77,11 +77,11 @@ export function Features() {
           </Card>
 
           {/* Feature 2 */}
-          <Card className="md:col-span-3 lg:col-span-4 group border-white/5 bg-muted/30 backdrop-blur-sm shadow-[6px_6px_0px_0px_oklch(var(--chart-2)/0.1)]">
-            <CardHeader className="p-8">
-              <div className="size-10 bg-chart-2/10 flex items-center justify-center text-chart-2 mb-4 border border-chart-2/20">
+          <Card className="lg:col-span-4 group border-white/5 bg-muted/30 backdrop-blur-sm shadow-[6px_6px_0px_0px_oklch(var(--chart-2)/0.1)]">
+            <CardHeader className="p-5 sm:p-6 lg:p-8">
+              <div className="size-8 sm:size-10 bg-chart-2/10 flex items-center justify-center text-chart-2 mb-3 sm:mb-4 border border-chart-2/20">
                 <svg
-                  className="size-5"
+                  className="size-4 sm:size-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -94,10 +94,10 @@ export function Features() {
                   />
                 </svg>
               </div>
-              <CardTitle className="text-xl font-heading font-black tracking-tighter uppercase">
+              <CardTitle className="text-lg sm:text-xl font-heading font-black tracking-tighter uppercase">
                 Lightning Fast
               </CardTitle>
-              <CardDescription className="font-body">
+              <CardDescription className="text-sm font-body">
                 Response times under 200ms with our optimized retrieval
                 pipeline.
               </CardDescription>
@@ -105,11 +105,11 @@ export function Features() {
           </Card>
 
           {/* Feature 3 */}
-          <Card className="md:col-span-3 lg:col-span-4 group border-white/5 bg-muted/30 backdrop-blur-sm shadow-[6px_6px_0px_0px_oklch(var(--foreground)/0.05)]">
-            <CardHeader className="p-8">
-              <div className="size-10 bg-emerald-500/10 flex items-center justify-center text-emerald-500 mb-4 border border-emerald-500/20">
+          <Card className="lg:col-span-4 group border-white/5 bg-muted/30 backdrop-blur-sm shadow-[6px_6px_0px_0px_oklch(var(--foreground)/0.05)]">
+            <CardHeader className="p-5 sm:p-6 lg:p-8">
+              <div className="size-8 sm:size-10 bg-emerald-500/10 flex items-center justify-center text-emerald-500 mb-3 sm:mb-4 border border-emerald-500/20">
                 <svg
-                  className="size-5"
+                  className="size-4 sm:size-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -122,10 +122,10 @@ export function Features() {
                   />
                 </svg>
               </div>
-              <CardTitle className="text-xl font-heading font-black tracking-tighter uppercase">
+              <CardTitle className="text-lg sm:text-xl font-heading font-black tracking-tighter uppercase">
                 Privacy First
               </CardTitle>
-              <CardDescription className="font-body">
+              <CardDescription className="text-sm font-body">
                 Your data is encrypted at rest and never used for training
                 foundation models.
               </CardDescription>

@@ -27,8 +27,8 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           {/* Content - staggered fade-in animation */}
           <div className="lg:col-span-7 text-center lg:text-left space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both">
             {/* Badge */}
@@ -41,15 +41,15 @@ export function Hero() {
             </div>
 
             {/* Heading */}
-            <h1 className="text-5xl md:text-7xl font-heading font-extrabold tracking-tight leading-[1.05] text-balance text-left lg:text-left">
-              Your Docs, <br />
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-heading font-extrabold tracking-tight leading-[1.05] text-balance text-center lg:text-left">
+              Your Docs <br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary/80 to-chart-2 uppercase italic pr-2">
                 Reimagined
               </span>
             </h1>
 
             {/* Description */}
-            <p className="text-lg md:text-xl text-muted-foreground font-body max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-body max-w-xl mx-auto lg:mx-0 leading-relaxed">
               Pocket RAG transforms static documentation into an interactive
               intelligence hub. Upload any file and start a meaningful dialogue
               with your data.
@@ -60,7 +60,7 @@ export function Hero() {
               <Button
                 size="lg"
                 asChild
-                className="h-12 px-8 text-sm font-bold shadow-[4px_4px_0px_0px_oklch(var(--primary))] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+                className="h-10 px-6 text-xs sm:h-12 sm:px-8 sm:text-sm font-bold shadow-[4px_4px_0px_0px_oklch(var(--primary))] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
               >
                 <Link to="/dashboard">
                   START BUILDING
@@ -72,7 +72,7 @@ export function Hero() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="h-12 px-8 text-sm font-medium border-border/10 bg-background/50 backdrop-blur-sm shadow-[4px_4px_0px_0px_oklch(var(--border))]"
+                className="h-10 px-6 text-xs sm:h-12 sm:px-8 sm:text-sm font-medium border-border/10 bg-background/50 backdrop-blur-sm shadow-[4px_4px_0px_0px_oklch(var(--border))]"
               >
                 <Link to="/" hash="features">
                   VIEW CAPABILITIES
@@ -115,27 +115,27 @@ function ChatMockup() {
   return (
     <div className="relative bg-card/60 backdrop-blur-2xl border border-white/10 shadow-2xl overflow-hidden">
       {/* Window Chrome */}
-      <div className="flex items-center justify-between px-5 py-4 border-b border-white/5 bg-background/40">
+      <div className="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4 border-b border-white/5 bg-background/40">
         <div className="flex lg:gap-1.5 gap-1">
-          <div className="size-2.5 bg-red-500/50" />
-          <div className="size-2.5 bg-amber-500/50" />
-          <div className="size-2.5 bg-emerald-500/50" />
+          <div className="size-2 sm:size-2.5 bg-red-500/50" />
+          <div className="size-2 sm:size-2.5 bg-amber-500/50" />
+          <div className="size-2 sm:size-2.5 bg-emerald-500/50" />
         </div>
-        <div className="flex items-center gap-2">
-          <div className="size-2 bg-emerald-500" />
-          <span className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="size-1.5 sm:size-2 bg-emerald-500" />
+          <span className="text-[8px] sm:text-[10px] font-bold tracking-widest uppercase text-muted-foreground">
             Session Active
           </span>
         </div>
       </div>
 
       {/* Chat Messages */}
-      <div className="p-6 space-y-6 min-h-[360px] font-body">
+      <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 min-h-[280px] sm:min-h-[360px] font-body">
         {/* Context loaded indicator */}
-        <div className="flex items-center gap-2 p-3 bg-primary/5 border border-primary/10 text-xs text-primary/80 font-medium">
-          <div className="p-1 bg-primary/10">
+        <div className="flex items-center gap-1.5 sm:gap-2 p-2 sm:p-3 bg-primary/5 border border-primary/10 text-[10px] sm:text-xs text-primary/80 font-medium">
+          <div className="p-0.5 sm:p-1 bg-primary/10">
             <svg
-              className="size-3"
+              className="size-2.5 sm:size-3"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -149,43 +149,43 @@ function ChatMockup() {
             </svg>
           </div>
           <span className="text-foreground/60">2 sources loaded</span>
-          <span className="text-foreground font-bold font-mono">
+          <span className="text-foreground font-bold font-mono truncate">
             transformer_paper.pdf
           </span>
         </div>
 
         {/* User message */}
-        <div className="flex flex-col items-end gap-2">
-          <div className="px-4 py-2.5 bg-primary text-primary-foreground text-sm font-medium border border-primary/20 max-w-[85%]">
+        <div className="flex flex-col items-end gap-1.5 sm:gap-2">
+          <div className="px-3 py-2 sm:px-4 sm:py-2.5 bg-primary text-primary-foreground text-xs sm:text-sm font-medium border border-primary/20 max-w-[85%]">
             How does attention work in transformers?
           </div>
-          <span className="text-[10px] text-muted-foreground font-mono">
+          <span className="text-[8px] sm:text-[10px] text-muted-foreground font-mono">
             2:34 PM
           </span>
         </div>
 
         {/* AI response */}
-        <div className="flex flex-col items-start gap-2">
-          <div className="px-4 py-3 bg-muted/80 text-sm leading-relaxed border border-white/5 max-w-[90%]">
+        <div className="flex flex-col items-start gap-1.5 sm:gap-2">
+          <div className="px-3 py-2 sm:px-4 sm:py-3 bg-muted/80 text-xs sm:text-sm leading-relaxed border border-white/5 max-w-[90%]">
             Based on <span className="text-primary font-bold">Section 3.2</span>
             , attention computes a weighted sum of values using{' '}
             <span className="font-semibold">Query, Key, Value</span> matrices.
             The formula is{' '}
-            <code className="px-1.5 py-0.5 bg-background text-[11px] font-mono border border-border/50">
+            <code className="px-1 py-0.5 sm:px-1.5 bg-background text-[9px] sm:text-[11px] font-mono border border-border/50">
               softmax(QK^T/√d)V
             </code>
           </div>
-          <span className="text-[10px] text-muted-foreground font-mono">
+          <span className="text-[8px] sm:text-[10px] text-muted-foreground font-mono">
             2:34 PM · from transformer_paper.pdf, page 5
           </span>
         </div>
       </div>
 
       {/* Input area */}
-      <div className="p-4 bg-background/40 border-t border-white/5">
-        <div className="flex items-center gap-3 px-4 py-3 bg-background/50 border border-white/5 text-sm text-muted-foreground group-hover:border-primary/20 transition-colors duration-300">
+      <div className="p-3 sm:p-4 bg-background/40 border-t border-white/5">
+        <div className="flex items-center gap-2 sm:gap-3 px-3 py-2 sm:px-4 sm:py-3 bg-background/50 border border-white/5 text-xs sm:text-sm text-muted-foreground group-hover:border-primary/20 transition-colors duration-300">
           <span className="font-mono">Type your query...</span>
-          <div className="ml-auto flex items-center gap-1.5">
+          <div className="ml-auto hidden sm:flex items-center gap-1.5">
             <div className="px-1.5 py-0.5 bg-muted text-[10px] font-bold border border-border">
               ⌘
             </div>

@@ -52,22 +52,22 @@ export function Header({ user }: HeaderProps) {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           <Button
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
-            className="w-9 h-9"
+            className="w-8 h-8 sm:w-9 sm:h-9"
           >
             {theme === 'dark' ? (
-              <Sun className="size-[1.2rem] transition-all" />
+              <Sun className="size-4 sm:size-[1.2rem] transition-all" />
             ) : (
-              <Moon className="size-[1.2rem] transition-all" />
+              <Moon className="size-4 sm:size-[1.2rem] transition-all" />
             )}
             <span className="sr-only">Toggle theme</span>
           </Button>
 
-          <div className="h-4 w-px bg-border/50 mx-2 hidden sm:block" />
+          <div className="h-4 w-px bg-border/50 mx-1 sm:mx-2 hidden sm:block" />
 
           {!user ? (
             <>
@@ -75,14 +75,14 @@ export function Header({ user }: HeaderProps) {
                 variant="ghost"
                 size="sm"
                 asChild
-                className="hidden sm:inline-flex font-medium"
+                className="hidden md:inline-flex font-medium"
               >
                 <Link to="/dashboard">Login</Link>
               </Button>
 
               <Button
                 asChild
-                className="h-11 px-6 font-semibold shadow-md shadow-primary/10"
+                className="h-9 px-3 text-xs sm:h-11 sm:px-6 sm:text-sm font-semibold shadow-md shadow-primary/10"
               >
                 <Link to="/dashboard">Get Started</Link>
               </Button>
@@ -90,7 +90,7 @@ export function Header({ user }: HeaderProps) {
           ) : (
             <Button
               asChild
-              className="h-11 px-6 font-semibold shadow-md shadow-primary/10"
+              className="h-9 px-3 text-xs sm:h-11 sm:px-6 sm:text-sm font-semibold shadow-md shadow-primary/10"
             >
               <Link to="/dashboard">Dashboard</Link>
             </Button>
