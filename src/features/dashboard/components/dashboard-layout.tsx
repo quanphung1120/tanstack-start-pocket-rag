@@ -15,12 +15,13 @@ export function DashboardLayout({ user, children }: DashboardLayoutProps) {
   return (
     <SidebarProvider>
       <AppSidebar user={user} />
-      <SidebarInset className="bg-background">
+      <SidebarInset className="bg-background overflow-hidden">
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-6 md:px-8 max-w-7xl mx-auto w-full">
           <SidebarTrigger className="-ml-1" />
-          {/* Optional: Add search or other global actions here */}
         </header>
-        <main className="p-6 md:p-8 max-w-7xl mx-auto w-full">{children}</main>
+        <div className="flex-1 min-h-0 overflow-hidden p-6 md:p-8 max-w-7xl mx-auto w-full">
+          {children}
+        </div>
       </SidebarInset>
     </SidebarProvider>
   )

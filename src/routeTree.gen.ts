@@ -12,7 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
-import { Route as ApiAuthCallbackRouteImport } from './routes/api/auth/callback'
+import { Route as DashboardChatRouteImport } from './routes/dashboard/chat'
+import { Route as ApiChatIndexRouteImport } from './routes/api/chat/index'
+import { Route as ApiAuthCallbackIndexRouteImport } from './routes/api/auth/callback/index'
 
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
@@ -29,42 +31,77 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DashboardRoute,
 } as any)
-const ApiAuthCallbackRoute = ApiAuthCallbackRouteImport.update({
-  id: '/api/auth/callback',
-  path: '/api/auth/callback',
+const DashboardChatRoute = DashboardChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const ApiChatIndexRoute = ApiChatIndexRouteImport.update({
+  id: '/api/chat/',
+  path: '/api/chat/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthCallbackIndexRoute = ApiAuthCallbackIndexRouteImport.update({
+  id: '/api/auth/callback/',
+  path: '/api/auth/callback/',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/': typeof DashboardIndexRoute
-  '/api/auth/callback': typeof ApiAuthCallbackRoute
+  '/api/chat': typeof ApiChatIndexRoute
+  '/api/auth/callback': typeof ApiAuthCallbackIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard': typeof DashboardIndexRoute
-  '/api/auth/callback': typeof ApiAuthCallbackRoute
+  '/api/chat': typeof ApiChatIndexRoute
+  '/api/auth/callback': typeof ApiAuthCallbackIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/': typeof DashboardIndexRoute
-  '/api/auth/callback': typeof ApiAuthCallbackRoute
+  '/api/chat/': typeof ApiChatIndexRoute
+  '/api/auth/callback/': typeof ApiAuthCallbackIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/dashboard/' | '/api/auth/callback'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/dashboard/chat'
+    | '/dashboard/'
+    | '/api/chat'
+    | '/api/auth/callback'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/api/auth/callback'
-  id: '__root__' | '/' | '/dashboard' | '/dashboard/' | '/api/auth/callback'
+  to:
+    | '/'
+    | '/dashboard/chat'
+    | '/dashboard'
+    | '/api/chat'
+    | '/api/auth/callback'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/dashboard/chat'
+    | '/dashboard/'
+    | '/api/chat/'
+    | '/api/auth/callback/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRouteWithChildren
-  ApiAuthCallbackRoute: typeof ApiAuthCallbackRoute
+  ApiChatIndexRoute: typeof ApiChatIndexRoute
+  ApiAuthCallbackIndexRoute: typeof ApiAuthCallbackIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -90,21 +127,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
-    '/api/auth/callback': {
-      id: '/api/auth/callback'
+    '/dashboard/chat': {
+      id: '/dashboard/chat'
+      path: '/chat'
+      fullPath: '/dashboard/chat'
+      preLoaderRoute: typeof DashboardChatRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/api/chat/': {
+      id: '/api/chat/'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/callback/': {
+      id: '/api/auth/callback/'
       path: '/api/auth/callback'
       fullPath: '/api/auth/callback'
-      preLoaderRoute: typeof ApiAuthCallbackRouteImport
+      preLoaderRoute: typeof ApiAuthCallbackIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
 }
 
 interface DashboardRouteChildren {
+  DashboardChatRoute: typeof DashboardChatRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardChatRoute: DashboardChatRoute,
   DashboardIndexRoute: DashboardIndexRoute,
 }
 
@@ -115,7 +168,8 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRouteWithChildren,
-  ApiAuthCallbackRoute: ApiAuthCallbackRoute,
+  ApiChatIndexRoute: ApiChatIndexRoute,
+  ApiAuthCallbackIndexRoute: ApiAuthCallbackIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
