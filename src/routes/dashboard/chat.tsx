@@ -140,9 +140,10 @@ function MessageList({ userName, onSelectSuggestion }: MessageListProps) {
   return (
     <>
       {messages.map((m) => (
-        <Message key={m.id} from={m.role}>
+        <Message key={m.id} from={m.role} className="max-w-full">
           <MessageContent
             className={cn(
+              m.role === 'assistant' && 'w-full',
               m.role === 'user' &&
                 'px-4 py-3 border bg-primary! text-primary-foreground! border-primary/20',
             )}

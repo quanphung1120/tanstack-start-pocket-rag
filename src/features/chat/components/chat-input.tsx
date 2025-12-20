@@ -1,5 +1,6 @@
-import type { ChangeEvent } from 'react'
 import { useChatStatus } from '@ai-sdk-tools/store'
+import { ChatModelSelector } from './chat-model-selector'
+import type { ChangeEvent } from 'react'
 import {
   PromptInput,
   PromptInputFooter,
@@ -8,7 +9,6 @@ import {
 } from '@/components/ai-elements/prompt-input'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { ChatModelSelector } from './chat-model-selector'
 
 const MAX_WORDS = 200
 
