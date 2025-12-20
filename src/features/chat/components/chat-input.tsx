@@ -1,5 +1,5 @@
-import { ChatModelSelector } from './chat-model-selector'
 import type { ChangeEvent } from 'react'
+import { useChatStatus } from '@ai-sdk-tools/store'
 import {
   PromptInput,
   PromptInputFooter,
@@ -8,6 +8,7 @@ import {
 } from '@/components/ai-elements/prompt-input'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
+import { ChatModelSelector } from './chat-model-selector'
 
 const MAX_WORDS = 200
 
@@ -15,21 +16,23 @@ interface ChatInputProps {
   value: string
   onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
   onSubmit: (message: { text: string }) => void
-  isLoading: boolean
   onStop: () => void
 }
 
 /**
  * Chat input component with textarea, model selector, and submit button.
+ * Uses useChatStatus from @ai-sdk-tools/store for streaming state.
  * Model selection is handled via ChatModelContext.
  */
 export function ChatInput({
   value,
   onChange,
   onSubmit,
-  isLoading,
   onStop,
 }: ChatInputProps) {
+  const status = useChatStatus()
+  const isLoading = status === 'streaming' || status === 'submitted'
+
   const wordCount = value.trim() === '' ? 0 : value.trim().split(/\s+/).length
   const isOverLimit = wordCount > MAX_WORDS
 
