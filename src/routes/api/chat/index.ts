@@ -8,7 +8,7 @@ export const Route = createFileRoute('/api/chat/')({
     handlers: {
       POST: async ({ request }) => {
         const { user } = await getAuth()
-        if (!user) {
+        if (!user || user.email != 'phungthequan030@gmail.com') {
           return new Response(JSON.stringify({ error: 'Unauthorized' }), {
             status: 401,
             headers: { 'Content-Type': 'application/json' },

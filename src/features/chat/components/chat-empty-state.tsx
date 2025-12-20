@@ -1,4 +1,3 @@
-import { SparklesIcon } from 'lucide-react'
 import { Suggestion, Suggestions } from '@/components/ai-elements/suggestion'
 
 const SUGGESTIONS = [
@@ -23,23 +22,22 @@ export function ChatEmptyState({
 
   return (
     <section
-      className="flex flex-col items-center justify-center h-full px-4 py-16"
+      className="flex flex-col items-center justify-center flex-1 px-4 py-16 text-center"
       aria-labelledby="chat-greeting"
     >
-      <SparklesIcon
-        className="size-12 p-3 rounded-xl bg-primary/10 text-primary mb-6"
-        aria-hidden="true"
-      />
       <h1
         id="chat-greeting"
-        className="text-2xl md:text-3xl font-heading font-semibold tracking-tight text-foreground text-center mb-2"
+        className="text-2xl md:text-3xl font-heading font-semibold tracking-tight text-foreground mb-2"
       >
         {greeting}, {userName}
       </h1>
-      <p className="text-muted-foreground text-sm md:text-base font-body text-center max-w-md mb-8">
+      <p className="text-muted-foreground text-sm md:text-base font-body max-w-md mb-8">
         How can I help you today?
       </p>
-      <Suggestions className="justify-center flex-wrap">
+      <Suggestions
+        asScrollArea={false}
+        className="justify-center flex-wrap w-full"
+      >
         {SUGGESTIONS.map((suggestion) => (
           <Suggestion
             key={suggestion}

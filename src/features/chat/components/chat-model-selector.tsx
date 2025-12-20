@@ -1,20 +1,18 @@
-import { ChevronDownIcon } from 'lucide-react'
 import { useState } from 'react'
-import {
-  CHAT_MODELS,
-  MODEL_INFO,
-  useChatModel,
-} from '../context/chat-model-context'
-import type { ChatModel } from '../context/chat-model-context'
+import { useChatModel } from '../context/chat-model-context'
 import {
   ModelSelector,
   ModelSelectorContent,
+  ModelSelectorEmpty,
   ModelSelectorGroup,
+  ModelSelectorInput,
   ModelSelectorItem,
   ModelSelectorList,
+  ModelSelectorLogo,
+  ModelSelectorLogoGroup,
+  ModelSelectorName,
   ModelSelectorTrigger,
 } from '@/components/ai-elements/model-selector'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 
 /**
@@ -23,59 +21,49 @@ import { Button } from '@/components/ui/button'
  */
 export function ChatModelSelector() {
   const [open, setOpen] = useState(false)
-  const { selectedModel, setSelectedModel, modelInfo } = useChatModel()
+  const { selectedModel, setSelectedModel, selectedModelData, models } =
+    useChatModel()
 
-  const handleModelSelect = (modelId: ChatModel) => {
-    setSelectedModel(modelId)
-    setOpen(false)
-  }
+  // Get unique chefs in order of appearance
+  const chefs = Array.from(new Set(models.map((model) => model.chef)))
 
   return (
-    <ModelSelector open={open} onOpenChange={setOpen}>
+    <ModelSelector onOpenChange={setOpen} open={open}>
       <ModelSelectorTrigger asChild>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="h-7 gap-1.5 font-medium px-2 hover:bg-muted/50 text-xs"
-        >
-          <span className={`size-1.5 rounded-full ${modelInfo.color}`} />
-          {modelInfo.name}
-          <ChevronDownIcon className="size-3 opacity-50" />
+        <Button className="justify-between" variant="outline">
+          {selectedModelData?.chefSlug && (
+            <ModelSelectorLogo provider={selectedModelData.chefSlug} />
+          )}
+          {selectedModelData?.name && (
+            <ModelSelectorName>{selectedModelData.name}</ModelSelectorName>
+          )}
         </Button>
       </ModelSelectorTrigger>
-
-      <ModelSelectorContent className="w-64" title="Choose a model">
+      <ModelSelectorContent>
+        <ModelSelectorInput placeholder="Search models..." />
         <ModelSelectorList>
-          <ModelSelectorGroup heading="Available Models">
-            {Object.entries(CHAT_MODELS).map(([key, modelId]) => {
-              const info = MODEL_INFO[modelId]
-              const isActive = selectedModel === modelId
-
-              return (
-                <ModelSelectorItem
-                  key={key}
-                  className="justify-between cursor-pointer"
-                  onSelect={() => handleModelSelect(modelId)}
-                >
-                  <div className="flex items-center gap-2">
-                    <span className={`size-1.5 rounded-full ${info.color}`} />
-                    <div className="flex flex-col">
-                      <span>{info.name}</span>
-                      <span className="text-[10px] text-muted-foreground">
-                        {info.description}
-                      </span>
-                    </div>
-                  </div>
-
-                  {isActive && (
-                    <Badge variant="outline" className="text-[10px] h-4 px-1">
-                      Active
-                    </Badge>
-                  )}
-                </ModelSelectorItem>
-              )
-            })}
-          </ModelSelectorGroup>
+          <ModelSelectorEmpty>No models found.</ModelSelectorEmpty>
+          {chefs.map((chef) => (
+            <ModelSelectorGroup heading={chef} key={chef}>
+              {models
+                .filter((model) => model.chef === chef)
+                .map((model) => (
+                  <ModelSelectorItem
+                    checked={selectedModel === model.id}
+                    key={model.id}
+                    onSelect={() => {
+                      setSelectedModel(model.id)
+                      setOpen(false)
+                    }}
+                    value={model.id}
+                  >
+                    <ModelSelectorLogo provider={model.chefSlug} />
+                    <ModelSelectorName>{model.name}</ModelSelectorName>
+                    <ModelSelectorLogoGroup providers={model.providers} />
+                  </ModelSelectorItem>
+                ))}
+            </ModelSelectorGroup>
+          ))}
         </ModelSelectorList>
       </ModelSelectorContent>
     </ModelSelector>

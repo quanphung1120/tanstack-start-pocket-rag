@@ -8,6 +8,7 @@ import {
 import { DefaultChatTransport } from 'ai'
 import { CopyIcon } from 'lucide-react'
 import { useState } from 'react'
+import { AIDevtools } from '@ai-sdk-tools/devtools'
 import {
   Conversation,
   ConversationContent,
@@ -68,7 +69,6 @@ function ChatContent() {
       api: '/api/chat',
       body: { model: selectedModel },
     }),
-    experimental_throttle: 300,
   })
 
   const handleSubmit = (message: { text: string }) => {
@@ -83,10 +83,10 @@ function ChatContent() {
 
   return (
     <main
-      className="flex relative flex-col max-w-3xl mx-auto group overflow-hidden h-[calc(100dvh-7rem)] md:h-[calc(100dvh-8rem)] no-scrollbar"
+      className="flex relative flex-col max-w-3xl mx-auto group h-[calc(100dvh-7rem)] md:h-[calc(100dvh-8rem)]"
       aria-label="Chat conversation"
     >
-      <Conversation className="flex-1 min-h-0 overflow-y-auto no-scrollbar">
+      <Conversation className="flex-1 min-h-0">
         <ConversationContent className="py-6 px-4 space-y-6 pb-32 no-scrollbar">
           <MessageList
             userName={user.firstName || 'there'}
@@ -102,6 +102,26 @@ function ChatContent() {
         onSubmit={handleSubmit}
         onStop={stop}
       />
+      {process.env.NODE_ENV === 'development' && (
+        <AIDevtools
+          enabled={true}
+          config={{
+            position: 'bottom',
+            height: 400,
+            streamCapture: {
+              enabled: true,
+              endpoint: '/api/chat',
+              autoConnect: true,
+            },
+            throttle: {
+              enabled: true,
+              interval: 100,
+              includeTypes: ['text-delta'],
+            },
+          }}
+          debug={true}
+        />
+      )}
     </main>
   )
 }

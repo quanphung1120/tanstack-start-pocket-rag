@@ -5,6 +5,8 @@
 @import '@fontsource-variable/bricolage-grotesque';
 @import '@fontsource-variable/outfit';
 
+@source "../node_modules/streamdown/dist/*.js";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -146,6 +148,27 @@
   .fill-mode-forwards {
     animation-fill-mode: forwards;
   }
+
+  /* Hide scrollbar while preserving scroll functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
+}
+
+/**
+ * Hide scrollbar for the Conversation component's internal scroller.
+ * StickToBottom library creates a scrollable div as first child.
+ */
+.conversation-scrollable > div {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.conversation-scrollable > div::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
 }
 
 /* Reduce motion for users who prefer it */
