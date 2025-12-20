@@ -9,6 +9,7 @@ import { DefaultChatTransport } from 'ai'
 import { CopyIcon } from 'lucide-react'
 import { useState } from 'react'
 import { AIDevtools } from '@ai-sdk-tools/devtools'
+import type { CustomUIMessage } from '@/features/chat/types'
 import {
   Conversation,
   ConversationContent,
@@ -47,7 +48,7 @@ export const Route = createFileRoute('/dashboard/chat')({
 function ChatPage() {
   return (
     <ChatModelProvider>
-      <Provider initialMessages={[]}>
+      <Provider<CustomUIMessage> initialMessages={[]}>
         <ChatContent />
       </Provider>
     </ChatModelProvider>
@@ -63,7 +64,7 @@ function ChatContent() {
   const [input, setInput] = useState('')
   const { selectedModel } = useChatModel()
 
-  const { sendMessage, stop } = useChat({
+  const { sendMessage, stop } = useChat<CustomUIMessage>({
     id: `chat-${selectedModel}`,
     transport: new DefaultChatTransport({
       api: '/api/chat',
@@ -136,7 +137,7 @@ interface MessageListProps {
 }
 
 function MessageList({ userName, onSelectSuggestion }: MessageListProps) {
-  const messages = useChatMessages()
+  const messages = useChatMessages<CustomUIMessage>()
   const status = useChatStatus()
   const isLoading = status === 'streaming' || status === 'submitted'
 
@@ -185,20 +186,36 @@ function MessageList({ userName, onSelectSuggestion }: MessageListProps) {
                 </Reasoning>
               ) : null,
             )}
-            {m.role === 'assistant' && (
-              <MessageToolbar className="opacity-0 group-hover:opacity-100 transition-opacity justify-end">
-                <MessageActions>
-                  <MessageAction
-                    tooltip="Copy"
-                    onClick={() => handleCopy(m.parts)}
-                    aria-label="Copy message to clipboard"
-                  >
-                    <CopyIcon className="size-3.5" aria-hidden="true" />
-                  </MessageAction>
-                </MessageActions>
-              </MessageToolbar>
-            )}
           </MessageContent>
+          {m.role === 'assistant' && (
+            <MessageToolbar className="mt-0 min-h-8">
+              <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground uppercase tracking-wider font-medium">
+                {m.metadata?.createdAt && (
+                  <span>
+                    {new Date(m.metadata.createdAt).toLocaleTimeString([], {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                    })}
+                  </span>
+                )}
+                {m.metadata?.createdAt && m.metadata.totalTokens && (
+                  <span className="opacity-50">•</span>
+                )}
+                {m.metadata?.totalTokens && (
+                  <span>{m.metadata.totalTokens} tokens</span>
+                )}
+              </div>
+              <MessageActions>
+                <MessageAction
+                  tooltip="Copy"
+                  onClick={() => handleCopy(m.parts)}
+                  aria-label="Copy message to clipboard"
+                >
+                  <CopyIcon className="size-3.5" aria-hidden="true" />
+                </MessageAction>
+              </MessageActions>
+            </MessageToolbar>
+          )}
         </Message>
       ))}
     </>
