@@ -19,6 +19,13 @@ export interface ChatModelDefinition {
  */
 export const CHAT_MODELS: Array<ChatModelDefinition> = [
   {
+    id: 'xai/grok-4.1-fast-reasoning',
+    name: 'xAI Grok 4.1',
+    chef: 'xAI',
+    chefSlug: 'xai',
+    providers: ['xai'],
+  },
+  {
     id: 'moonshotai/kimi-k2-thinking',
     name: 'Kimi K2 Thinking',
     chef: 'Moonshot AI',
@@ -31,13 +38,6 @@ export const CHAT_MODELS: Array<ChatModelDefinition> = [
     chef: 'Perplexity',
     chefSlug: 'perplexity',
     providers: ['perplexity'],
-  },
-  {
-    id: 'xai/grok-4.1-fast-reasoning',
-    name: 'xAI Grok 4.1',
-    chef: 'xAI',
-    chefSlug: 'xai',
-    providers: ['xai'],
   },
 ]
 

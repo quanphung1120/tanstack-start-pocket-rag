@@ -22,7 +22,7 @@ export const Route = createFileRoute('/api/chat/')({
           }: { messages: Array<CustomUIMessage>; model?: string } =
             await request.json()
 
-          const selectedModel = model || 'moonshotai/kimi-k2-thinking'
+          const selectedModel = model || 'xai/grok-4.1-fast-reasoning'
 
           const result = streamText({
             model: gateway(selectedModel),
